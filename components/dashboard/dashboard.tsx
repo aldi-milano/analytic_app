@@ -21,7 +21,7 @@ export default function Dashboard() {
     );
   }
   return (
-    <div>
+    <div className="pb-24">
       <MetricCardGrid
         omset_kotor={data.omset_kotor}
         pengeluaran={data.pengeluaran}
@@ -37,8 +37,6 @@ export default function Dashboard() {
         top={data.top_5_barang}
         bottom={data.top_5_least_barang}
       />
-      {/* <TopProducts top_5_barang={data.top_5_barang} />
-      <BottomProducts bottom_5_barang={data.top_5_least_barang} /> */}
     </div>
   );
 }

@@ -8,15 +8,15 @@ import { DropdownFilter } from "./dropdown";
 
 export default function DashboardHeader() {
   return (
-    <header className="bg-slate-50 px-4 py-4 border-b border-gray-100 sticky top-0 z-10">
-      <div className="flex items-center justify-between">
+    <header className="bg-slate-50 px-4 py-4 sticky top-0 z-10">
+      <div className="flex items-center justify-between border-b-1 border-gray-200 pb-2">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gray-900 text-white rounded-md">
             <Store className="w-4 h-4" />
           </div>
           <div>
             <h1 className="font-bold text-gray-900 text-base leading-tight">
-              Toko Sembako Jaya
+              Toko Sauyunan
             </h1>
             <p className="text-xs text-gray-500">Kasir: Budi (Shift Pagi)</p>
           </div>
@@ -31,7 +31,7 @@ export default function DashboardHeader() {
         </button>
       </div>
 
-      <div className="mt-4 flex items-center justify-between pt-2">
+      <div className="flex items-center justify-between pt-2">
         <Suspense fallback="Loading...">
           <DropdownFilter />
         </Suspense>

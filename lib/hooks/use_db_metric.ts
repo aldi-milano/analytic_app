@@ -33,7 +33,7 @@ export function useDashboardMetrics() {
   const searchParams = useSearchParams();
   const currentFilter =
     (searchParams.get("filter_period") as FilterRange) || "days";
-  console.log(currentFilter);
+  // console.log(currentFilter);
 
   const { data, isPending, isError } = useQuery({
     queryKey: ["dashboard-metrics", currentFilter],

@@ -24,9 +24,9 @@ export function QuickAction() {
       <SheetTrigger asChild>
         <Button
           size="icon"
-          className="h-14 w-14 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all"
+          className="h-14 w-14 rounded-full shadow-sm hover:scale-105 active:scale-95 transition-all"
         >
-          <Plus className="h-7 w-7" />
+          <Plus className="h-14 w-14" />
         </Button>
       </SheetTrigger>
       <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-6">
@@ -35,30 +35,44 @@ export function QuickAction() {
         </SheetHeader>
         <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
           <div>
-            <label className="text-xs font-medium text-slate-600">Tipe Transaksi</label>
+            <label className="text-xs font-medium text-slate-600">
+              Tipe Transaksi
+            </label>
             <Select defaultValue="pemasukan">
               <SelectTrigger className="mt-1">
                 <SelectValue placeholder="Pilih tipe" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="pemasukan">Penjualan (Pemasukan)</SelectItem>
-                <SelectItem value="pengeluaran">Kulakan / Beban (Pengeluaran)</SelectItem>
+                <SelectItem value="pengeluaran">
+                  Kulakan / Beban (Pengeluaran)
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div>
-            <label className="text-xs font-medium text-slate-600">Nominal (Rp)</label>
-            <Input type="number" placeholder="0" className="mt-1 text-lg font-bold" />
+            <label className="text-xs font-medium text-slate-600">
+              Nominal (Rp)
+            </label>
+            <Input
+              type="number"
+              placeholder="0"
+              className="mt-1 text-lg font-bold"
+            />
           </div>
 
           <div>
-            <label className="text-xs font-medium text-slate-600">Keterangan / Nama Barang</label>
+            <label className="text-xs font-medium text-slate-600">
+              Keterangan / Nama Barang
+            </label>
             <Input placeholder="Contoh: Minyak Goreng 2L" className="mt-1" />
           </div>
 
           <div>
-            <label className="text-xs font-medium text-slate-600">Metode Pembayaran</label>
+            <label className="text-xs font-medium text-slate-600">
+              Metode Pembayaran
+            </label>
             <Select defaultValue="tunai">
               <SelectTrigger className="mt-1">
                 <SelectValue placeholder="Metode" />

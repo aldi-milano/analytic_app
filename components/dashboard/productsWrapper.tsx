@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -29,20 +27,12 @@ export function ProductsWrapper({ top, bottom }: ProductsProps) {
       <CarouselContent>
         <CarouselItem>
           <div>
-            {/* <Card> */}
-            {/* <CardContent className="flex items-center justify-center"> */}
             <TopProducts top={top} />
-            {/* </CardContent> */}
-            {/* </Card> */}
           </div>
         </CarouselItem>
         <CarouselItem>
           <div>
-            {/* <Card> */}
-            {/* <CardContent className="flex items-center justify-center"> */}
             <BottomProducts bottom={bottom} />
-            {/* </CardContent> */}
-            {/* </Card> */}
           </div>
         </CarouselItem>
       </CarouselContent>
