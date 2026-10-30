@@ -23,3 +23,5 @@ export async function fetchMetric(range: FilterRange = "days") {
   console.log("✅ Fetch Berhasil:", data);
   return { data, error: null };
 }
+
+fetchMetric();

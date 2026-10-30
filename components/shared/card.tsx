@@ -17,12 +17,12 @@ const variantStyles = {
     textSub: "text-emerald-600",
     iconBg: "bg-emerald-100 text-emerald-600",
   },
-  rose: {
-    bg: "bg-rose-50/60 border-rose-100",
-    textTitle: "text-rose-700",
-    textValue: "text-rose-950",
-    textSub: "text-rose-600",
-    iconBg: "bg-rose-100 text-rose-600",
+  yellow: {
+    bg: "bg-yellow-50/60 border-yellow-100",
+    textTitle: "text-yellow-700",
+    textValue: "text-yellow-950",
+    textSub: "text-yellow-600",
+    iconBg: "bg-yellow-100 text-yellow-600",
   },
 };
 
@@ -31,7 +31,7 @@ interface StatCardProps {
   amount: number;
   subtitle?: string;
   icon: LucideIcon; // Menerima komponen Icon dari Lucide
-  variant?: "blue" | "emerald" | "rose";
+  variant?: "blue" | "emerald" | "yellow";
   className?: string;
   size?: "normal" | "lg";
 }

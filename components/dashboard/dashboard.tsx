@@ -1,13 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
-import DashboardHeader from "./dashboard_header";
 import { MetricCardGrid } from "./metricCardGrid";
 import { Separator } from "@/components/ui/separator";
 import { TopProducts } from "./topProducts";
 import { useDashboardMetrics } from "@/lib/hooks/use_db_metric";
 import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BottomProducts } from "./bottomProducts";
+import { ProductsWrapper } from "./productsWrapper";
 
 export default function Dashboard() {
   const { data, isLoading } = useDashboardMetrics();
@@ -22,14 +22,6 @@ export default function Dashboard() {
   }
   return (
     <div>
-      <DashboardHeader />
-      {/* <Suspense
-        fallback={
-          <div className="p-4 text-xs text-muted-foreground">
-            Memuat data dashboard...
-          </div>
-        }
-      > */}
       <MetricCardGrid
         omset_kotor={data.omset_kotor}
         pengeluaran={data.pengeluaran}
@@ -41,7 +33,12 @@ export default function Dashboard() {
       <div className="p-4">
         <Separator />
       </div>
-      <TopProducts top_5_barang={data.top_5_barang} />
+      <ProductsWrapper
+        top={data.top_5_barang}
+        bottom={data.top_5_least_barang}
+      />
+      {/* <TopProducts top_5_barang={data.top_5_barang} />
+      <BottomProducts bottom_5_barang={data.top_5_least_barang} /> */}
     </div>
   );
 }
