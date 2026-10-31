@@ -35,10 +35,11 @@ export function useStokBarang() {
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 30,
     placeholderData: keepPreviousData,
+    enabled: typeof window !== "undefined",
   });
 
   return {
-    data: data || DEFAULT_STOK_INFORMASI,
+    data: data || [],
     isLoading: isPending,
     isError: isError,
   };

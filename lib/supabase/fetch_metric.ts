@@ -15,9 +15,9 @@ export async function fetchMetric(range: FilterRange = "day") {
   });
   if (error) {
     console.error("❌ Fetch Gagal:", error.message);
-    throw new Error(error.message);
+    // throw new Error(error.message);
     // KODE PERBAIKAN: Kembalikan objek status alih-alih melempar exception
-    // return { data: null, error: error.message };
+    return { data: null, error: error.message };
   }
 
   console.log("✅ Fetch Berhasil:", data);

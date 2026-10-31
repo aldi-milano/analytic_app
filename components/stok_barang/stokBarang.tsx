@@ -2,7 +2,7 @@
 
 import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useStokBarang } from "@/lib/hooks/use_stok";
+import { useStokBarang, StokInformasi } from "@/lib/hooks/use_stok";
 import {
   Table,
   TableBody,
@@ -39,7 +39,7 @@ export function StokBarang() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((item, i) => (
+          {data.map((item: StokInformasi, i: number) => (
             <TableRow key={i} className="even:bg-zinc-200/60">
               <TableCell>{item.id_produk}</TableCell>
               <TableCell>{item.nama_produk}</TableCell>
