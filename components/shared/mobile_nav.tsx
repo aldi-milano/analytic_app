@@ -14,7 +14,7 @@ export function MobileNav() {
   const pathName = usePathname();
 
   return (
-    <div className="fixed bottom-0 left-1/2 z-40 flex w-full max-w-md -translate-x-1/2 grid grid-cols-5 justify-items-center justify-between border-t bg-slate-50 px-6 py-2 backdrop-blur-md">
+    <div className="fixed bottom-0 left-1/2 z-40 flex w-full max-w-md -translate-x-1/2 grid grid-cols-5 justify-items-center justify-between border-t bg-slate-50 py-3 backdrop-blur-md">
       <Link
         href={"/dashboard"}
         className="flex flex-1 flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-600"
