@@ -29,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="bg-slate-200 min-h-screen w-full flex justify-center items-center">
         <div className="w-full max-w-md min-h-screen">
           <MobileHeader />
-          <div className="w-full max-w-md min-h-screen bg-slate-50 text-slate-900 shadow-lg relative overflow-x-hidden">
+          <div className="w-full max-w-md min-h-screen bg-slate-50 text-slate-900 shadow-lg relative overflow-x-hidden pb-10">
             <Providers>{children}</Providers>
           </div>
           <MobileNav />

@@ -17,6 +17,7 @@ import { UseTransaction } from "@/lib/hooks/use_transaction";
 
 export function HistoryTransaction() {
   const { data, isLoading } = UseTransaction();
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -52,8 +53,8 @@ export function HistoryTransaction() {
             </TableHeader>
             <TableBody>
               {res.items.map((item, id) => (
-                <TableRow key={id}>
-                  <TableCell>TRX01</TableCell>
+                <TableRow key={id} className="even:bg-zinc-200/60">
+                  <TableCell>{item.transaction_log}</TableCell>
                   <TableCell className="text-sm text-center">
                     {item.product_name}
                   </TableCell>
