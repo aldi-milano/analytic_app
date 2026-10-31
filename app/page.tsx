@@ -8,11 +8,8 @@ export default async function Page() {
   return (
     <main className="min-h-screen">
       <Suspense>
-        <DashboardHeader />
         <Dashboard />
       </Suspense>
-      {/* <HistoryTransaction /> */}
-      <MobileNav />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import { HistoryTransaction } from "../../components/transaction/history";
 
 export default function Transaction() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <HistoryTransaction />
     </Suspense>
   );

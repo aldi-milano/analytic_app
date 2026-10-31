@@ -24,8 +24,7 @@ export interface TransactionHistory {
 export function UseTransaction() {
   const searchParams = useSearchParams();
   const currentFilter =
-    (searchParams.get("filter_period") as FilterRange) || "days";
-  console.log(currentFilter);
+    (searchParams.get("filter_period") as FilterRange) || "day";
 
   const { data, isPending, isError } = useQuery<TransactionHistory[]>({
     queryKey: ["transaction", currentFilter],

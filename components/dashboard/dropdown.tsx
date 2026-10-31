@@ -18,13 +18,12 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, CalendarDays } from "lucide-react";
-import { fetchMetric } from "@/lib/supabase/fetch_metric";
+import { CalendarDays } from "lucide-react";
 
 export function DropdownFilter() {
   // Map nilai value ke label yang ingin ditampilkan di Button
   const labels: Record<string, string> = {
-    days: "Hari Ini",
+    day: "Hari Ini",
     week: "Minggu Ini",
     month: "Bulan Ini",
   };
@@ -33,18 +32,18 @@ export function DropdownFilter() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // 1. AMBIL VALUE DARI URL (Default ke 'days' jika query 'days' belum ada)
-  const currentFilter = searchParams.get("filter_period") || "days";
+  // 1. AMBIL VALUE DARI URL (Default ke 'day' jika query 'day' belum ada)
+  const currentFilter = searchParams.get("filter_period") || "day";
 
   // 2. FUNGSI UNTUK MENGUBAH URL SAAT DROPDOWN DIPIIH
   const handleValueChange = (value: string) => {
     // Salin parameter URL yang sedang aktif
     const params = new URLSearchParams(searchParams.toString());
 
-    // Set parameter 'days' dengan value baru dari dropdown
+    // Set parameter 'day' dengan value baru dari dropdown
     params.set("filter_period", value);
 
-    // Update URL di browser tanpa me-refresh halaman (contoh: /dashboard?days=week)
+    // Update URL di browser tanpa me-refresh halaman (contoh: /dashboard?day=week)
     router.push(`${pathname}?${params.toString()}`);
   };
 
@@ -66,7 +65,7 @@ export function DropdownFilter() {
             value={currentFilter}
             onValueChange={handleValueChange}
           >
-            <DropdownMenuRadioItem className="text-xs" value="days">
+            <DropdownMenuRadioItem className="text-xs" value="day">
               Hari Ini
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem className="text-xs" value="week">

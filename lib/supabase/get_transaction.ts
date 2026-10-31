@@ -14,14 +14,14 @@ export async function fetchTransaction(range: FilterRange = "day") {
     period_filter: range,
   });
   if (error) {
-    console.error("❌ Fetch Gagal:", error.message);
+    // console.error("❌ Fetch Gagal:", error.message);
     throw new Error(error.message);
     // KODE PERBAIKAN: Kembalikan objek status alih-alih melempar exception
     // return { data: null, error: error.message };
   }
 
-  console.log("✅ Fetch Berhasil:", data);
+  console.log("✅ Fetch Berhasil:", data.length);
   return { data, error: null };
 }
 
-fetchTransaction();
+fetchTransaction("week");

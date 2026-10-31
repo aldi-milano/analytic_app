@@ -32,7 +32,7 @@ const DEFAULT_METRIC_DATA: MetricData = {
 export function useDashboardMetrics() {
   const searchParams = useSearchParams();
   const currentFilter =
-    (searchParams.get("filter_period") as FilterRange) || "days";
+    (searchParams.get("filter_period") as FilterRange) || "day";
   // console.log(currentFilter);
 
   const { data, isPending, isError } = useQuery({

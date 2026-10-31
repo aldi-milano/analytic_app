@@ -2,10 +2,10 @@
 
 import { createSupabaseClient } from "./client";
 
-export type FilterRange = "days" | "week" | "month";
+export type FilterRange = "day" | "week" | "month";
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function fetchMetric(range: FilterRange = "days") {
+export async function fetchMetric(range: FilterRange = "day") {
   const supabase = createSupabaseClient();
 
   // await delay(10000); // Simulasi delay 1 detik
