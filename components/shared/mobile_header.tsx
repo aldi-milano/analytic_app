@@ -2,6 +2,7 @@ import { Store, Bell } from "lucide-react";
 import LiveClock from "@/components/dashboard/clock";
 import { DropdownFilter } from "../dashboard/dropdown";
 import { Suspense } from "react";
+import { DropDownSkeleton } from "./skeletonDropDown";
 
 export function MobileHeader() {
   return (
@@ -27,7 +28,7 @@ export function MobileHeader() {
         </button>
       </div>
       <div className="flex items-center justify-between w-full">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<DropDownSkeleton />}>
           <DropdownFilter />
         </Suspense>
         <LiveClock />

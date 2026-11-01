@@ -24,7 +24,7 @@ export function QuickAction() {
       <SheetTrigger asChild>
         <Button
           size="icon"
-          className="h-14 w-14 rounded-full shadow-sm hover:scale-105 active:scale-95 transition-all"
+          className="h-12 w-12 rounded-md shadow-sm hover:scale-105 active:scale-95 transition-all"
         >
           <Plus className="h-14 w-14" />
         </Button>

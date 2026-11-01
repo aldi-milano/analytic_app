@@ -36,15 +36,14 @@ export function HistoryTransaction() {
             <Separator orientation="vertical" />
             <p className="text-[10px] text-slate-500">{res.payment_method}</p>
             <Separator orientation="vertical" />
-            <p className="text-[10px] text-slate-500">
-              {new Date(res.timestamp).toLocaleString("id-ID")}
-            </p>
+            <p className="text-[10px] text-slate-500">{res.timestamp}</p>
             <Separator orientation="vertical" />
             <p className="text-[10px] text-slate-500">{res.cashier_shift}</p>
           </div>
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="text-sm text-left">No</TableHead>
                 <TableHead className="text-sm text-left">Log</TableHead>
                 <TableHead className="text-sm text-center">Item</TableHead>
                 <TableHead className="text-sm text-center">Quantity</TableHead>
@@ -54,6 +53,7 @@ export function HistoryTransaction() {
             <TableBody>
               {res.items.map((item, id) => (
                 <TableRow key={id} className="even:bg-zinc-200/60">
+                  <TableCell>{id + 1}</TableCell>
                   <TableCell>{item.transaction_log}</TableCell>
                   <TableCell className="text-sm text-center">
                     {item.product_name}
@@ -62,14 +62,14 @@ export function HistoryTransaction() {
                     {item.qty}
                   </TableCell>
                   <TableCell className="text-sm text-right">
-                    Rp {item.amount.toLocaleString("id-ID")}
+                    {item.amount.toLocaleString("id-ID")}
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableRow>
-                <TableCell colSpan={3}>Total</TableCell>
+                <TableCell colSpan={4}>Total</TableCell>
                 <TableCell className="text-right">
                   Rp {res.total.toLocaleString("id-ID")}
                 </TableCell>
