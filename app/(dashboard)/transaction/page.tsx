@@ -1,3 +1,5 @@
+export const instant = false;
+
 import { Suspense } from "react";
 import { HistoryTransaction } from "../../../components/transaction/history";
 import { TransactionSkeleton } from "@/components/shared/skeletonTransaction";

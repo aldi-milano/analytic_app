@@ -1,14 +1,10 @@
 "use client";
 
-import {
-  ReceiptText,
-  Package,
-  CircleUserRound,
-  ChartColumnIncreasing,
-} from "lucide-react";
+import { ReceiptText, Package, ChartColumnIncreasing } from "lucide-react";
 import Link from "next/link";
 import { QuickAction } from "./quick_action";
 import { usePathname } from "next/navigation";
+import { AlertLogout } from "./logout";
 
 export function MobileNav() {
   const pathName = usePathname();
@@ -44,10 +40,10 @@ export function MobileNav() {
         <span>Stok</span>
       </Link>
 
-      <button className="flex flex-1 flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-600 hover:scale-105">
-        <CircleUserRound className="h-5 w-5" />
-        <span>Profile</span>
-      </button>
+      <div className="flex flex-1 flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-600 hover:scale-105">
+        <AlertLogout />
+        <span>Logout</span>
+      </div>
     </div>
   );
 }

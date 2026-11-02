@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
@@ -15,54 +17,93 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { loginUser } from "@/lib/services/auth";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { login } from "@/app/actions/auth";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      await loginUser(email, password);
+      await login();
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="bg-slate-50">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
+          <CardTitle>Masuk ke akun Anda</CardTitle>
+          <CardDescription>Masukan email Anda di bawah ini</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleLogin}>
+            {error && (
+              <div className="p-3 text-base font-medium text-red-700 bg-red-100 border border-red-300 rounded-md">
+                {error}
+              </div>
+            )}
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="contoh@gmail.com"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Field>
               <Field>
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </Field>
-              <Field>
-                <Button type="submit">Login</Button>
-                <Button variant="outline" type="button">
-                  Login with Google
+              <Field className="flex flex-col gap-3">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full text-base py-5"
+                >
+                  {isLoading ? "Memproses..." : "Masuk"}
                 </Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account? <a href="#">Sign up</a>
-                </FieldDescription>
               </Field>
             </FieldGroup>
+
+            <div className="mt-4">
+              <FieldDescription className="text-center block text-sm text-muted-foreground">
+                Belum punya akun?{" "}
+                <a href="#" className="text-sm font-semibold hover:underline">
+                  Daftar
+                </a>
+              </FieldDescription>
+            </div>
           </form>
         </CardContent>
       </Card>

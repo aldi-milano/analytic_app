@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { MobileHeader } from "@/components/shared/mobile_header";
 import { MobileNav } from "@/components/shared/mobile_nav";
-import Providers from "../providers";
+import AuthGuard from "@/components/shared/authguard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,10 +22,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // <AuthGuard>
     <>
       <MobileHeader />
       <div className="flex-1 overflow-x-hidden pb-20">{children}</div>
       <MobileNav />
     </>
+    // {/* </AuthGuard> */}
   );
 }
