@@ -6,6 +6,7 @@ import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProductsWrapper } from "./productsWrapper";
 import { LineSeparator } from "../shared/separator";
+import { RushHour } from "../charts/rushHour";
 
 export default function Dashboard() {
   const { data, isLoading } = useDashboardMetrics();
@@ -26,6 +27,8 @@ export default function Dashboard() {
         total_transaksi_penjualan={data.total_transaksi_penjualan}
         total_transaksi_pembelian={data.total_transaksi_pembelian}
       />
+      <LineSeparator />
+      <RushHour />
       <LineSeparator />
       <ProductsWrapper
         top={data.top_5_barang}
