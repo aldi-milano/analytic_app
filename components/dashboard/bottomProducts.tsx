@@ -21,7 +21,7 @@ interface BottomProductsProps {
 export function BottomProducts({ bottom }: BottomProductsProps) {
   return (
     <div className="px-16 space-y-4">
-      <h1 className="text-xl font-semibold">Bottom 5 Products</h1>
+      <h1 className="text-md font-semibold">Bottom 5 Products</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -33,9 +33,9 @@ export function BottomProducts({ bottom }: BottomProductsProps) {
         <TableBody>
           {bottom.map((item, index) => (
             <TableRow key={index}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell className="font-medium">{item.product_name}</TableCell>
-              <TableCell>{item.total_qty}</TableCell>
+              <TableCell className="text-sm">{index + 1}</TableCell>
+              <TableCell className="text-sm">{item.product_name}</TableCell>
+              <TableCell className="text-sm">{item.total_qty}</TableCell>
             </TableRow>
           ))}
         </TableBody>

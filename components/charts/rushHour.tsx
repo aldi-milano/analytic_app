@@ -316,8 +316,8 @@ export function RushHour() {
   }
 
   return (
-    <div className="p-4">
-      <CardHeader className="flex items-center gap-2 space-y-0 py-5 sm:flex-row">
+    <div>
+      <CardHeader className="flex flex-col items-start gap-4 space-y-0 p-4 sm:flex-row sm:items-center">
         <div className="grid flex-1 gap-1">
           <CardTitle className="text-md">Jam Ramai Pelanggan</CardTitle>
           <CardDescription className="text-sm">
@@ -329,25 +329,25 @@ export function RushHour() {
           onValueChange={(val) => setRange(Number(val) as FilterRange)}
         >
           <SelectTrigger
-            className="w-[160px] rounded-lg sm:ml-auto sm:flex"
+            className="rounded-md sm:ml-auto sm:flex text-xs"
             aria-label="Pilih rentang waktu"
           >
             <SelectValue placeholder="Pilih Periode" />
           </SelectTrigger>
-          <SelectContent className="rounded-xl">
-            <SelectItem value={"7"} className="rounded-lg">
+          <SelectContent className="rounded-md">
+            <SelectItem value={"7"} className="rounded-md text-xs">
               7 Hari Terakhir
             </SelectItem>
-            <SelectItem value={"30"} className="rounded-lg">
+            <SelectItem value={"30"} className="rounded-md text-xs">
               30 Hari Terakhir
             </SelectItem>
-            <SelectItem value={"90"} className="rounded-lg">
+            <SelectItem value={"90"} className="rounded-md text-xs">
               90 Hari Terakhir
             </SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
-      <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+      <CardContent className="p-2">
         {/* Loading state sederhana agar tidak error saat data ditarik */}
         {isLoading ? (
           <div className="flex h-[250px] w-full items-center justify-center text-muted-foreground">
@@ -435,26 +435,24 @@ export function RushHour() {
               />
 
               {/* UBAH: 3 Area untuk masing-masing kategori waktu (Malam, Siang, Pagi) */}
+
               <Area
-                dataKey="malam"
+                dataKey="pagi"
                 type="natural"
-                fill="url(#fillMalam)"
-                stroke="var(--color-malam)"
-                stackId="a"
+                fill="url(#fillPagi)"
+                stroke="var(--color-pagi)"
               />
               <Area
                 dataKey="siang"
                 type="natural"
                 fill="url(#fillSiang)"
                 stroke="var(--color-siang)"
-                stackId="a"
               />
               <Area
-                dataKey="pagi"
+                dataKey="malam"
                 type="natural"
-                fill="url(#fillPagi)"
-                stroke="var(--color-pagi)"
-                stackId="a"
+                fill="url(#fillMalam)"
+                stroke="var(--color-malam)"
               />
 
               <ChartLegend content={<ChartLegendContent />} />

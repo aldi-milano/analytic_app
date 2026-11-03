@@ -3,6 +3,7 @@ import LiveClock from "@/components/dashboard/clock";
 import { DropdownFilter } from "../dashboard/dropdown";
 import { Suspense } from "react";
 import { DropDownSkeleton } from "./skeletonDropDown";
+import { SheetNotification } from "./sheet";
 
 export function MobileHeader() {
   return (
@@ -23,7 +24,8 @@ export function MobileHeader() {
           className="relative rounded-full p-2 hover:bg-slate-100"
           aria-label="Notifikasi"
         >
-          <Bell className="h-5 w-5 text-slate-600" />
+          {/* <Bell className="h-5 w-5 text-slate-600" /> */}
+          <SheetNotification />
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
         </button>
       </div>
