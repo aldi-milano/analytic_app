@@ -11,6 +11,8 @@ export interface StokInformasi {
   harga_jual: number;
   stok_akhir: number;
   nama_produk: string;
+  avg_qty: number;
+  rekomendasi_qty_stok: number;
 }
 
 const DEFAULT_STOK_INFORMASI: StokInformasi = {
@@ -21,6 +23,8 @@ const DEFAULT_STOK_INFORMASI: StokInformasi = {
   harga_beli: 0,
   harga_jual: 0,
   nama_produk: "",
+  avg_qty: 0,
+  rekomendasi_qty_stok: 0,
 };
 
 export function useStokBarang() {

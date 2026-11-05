@@ -51,3 +51,13 @@ export const useTransaksiStore = create<TransaksiStore>((set, get) => ({
   clearCart: () => set({ cart: [] }),
   getTotal: () => get().cart.reduce((total, item) => total + item.jumlah, 0),
 }));
+
+interface NotifState {
+  notifCount: number;
+  setNotifCount: (count: number) => void;
+}
+
+export const useNotifStore = create<NotifState>((set) => ({
+  notifCount: 0, // Nilai awal (default)
+  setNotifCount: (count) => set({ notifCount: count }), // Fungsi untuk mengubah nilai
+}));

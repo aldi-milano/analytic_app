@@ -1,64 +1,3 @@
-// "use client";
-
-// import { LoaderIcon } from "lucide-react";
-// import { cn } from "@/lib/utils";
-// import { useStokBarang, StokInformasi } from "@/lib/hooks/use_stok";
-// import {
-//   Table,
-//   TableBody,
-//   TableCaption,
-//   TableCell,
-//   TableFooter,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "@/components/ui/table";
-// import { ScrollArea } from "@/components/ui/scroll-area";
-
-// export function TabelTransaksi() {
-//   const { data, isLoading } = useStokBarang();
-//   console.log(data);
-
-//   if (isLoading) {
-//     return (
-//       <div className="flex items-center justify-center w-full h-screen">
-//         <LoaderIcon className={cn("size-4 animate-spin")} />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div>
-//       <Table>
-//         <TableHeader className="sticky top-0 z-10">
-//           <TableRow>
-//             <TableHead className="text-sm text-left">No</TableHead>
-//             <TableHead className="text-sm text-left">ID Produk</TableHead>
-//             <TableHead className="text-sm text-center">Produk</TableHead>
-//             <TableHead className="text-sm text-center">Qty</TableHead>
-//             <TableHead className="text-sm text-right">Jumlah</TableHead>
-//           </TableRow>
-//         </TableHeader>
-//         <TableBody>
-//           <TableRow className="even:bg-zinc-200/60">
-//             <TableCell>1</TableCell>
-//             <TableCell>1234HAHA</TableCell>
-//             <TableCell className="text-sm text-center">Kopi ABC Susu</TableCell>
-//             <TableCell className="text-sm text-center">2</TableCell>
-//             <TableCell className="text-sm text-right">4000</TableCell>
-//           </TableRow>
-//         </TableBody>
-//         <TableFooter>
-//           <TableRow>
-//             <TableCell colSpan={4}>Total</TableCell>
-//             <TableCell className="text-right">Rp 4000</TableCell>
-//           </TableRow>
-//         </TableFooter>
-//       </Table>
-//     </div>
-//   );
-// }
-
 import { useTransaksiStore } from "@/lib/store/useTransaksiStore";
 import {
   Table,
@@ -79,6 +18,7 @@ export default function TabelTransaksi() {
     <Table className="mb-5 border rounded-md">
       <TableHeader className="sticky top-0 z-10 bg-zinc-50">
         <TableRow>
+          <TableHead className="text-sm text-left">No</TableHead>
           <TableHead className="text-sm text-left">ID</TableHead>
           <TableHead className="text-sm text-left">Produk</TableHead>
           <TableHead className="text-sm text-center">Qty</TableHead>
@@ -99,17 +39,18 @@ export default function TabelTransaksi() {
           </TableRow>
         ) : (
           cart.map((item, index) => (
-            <TableRow key={index} className="even:bg-zinc-100/50">
+            <TableRow key={index} className="even:bg-zinc-200/60">
+              <TableCell>{index + 1}</TableCell>
               <TableCell>{item.id_produk}</TableCell>
               <TableCell className="text-sm text-left font-medium">
                 {item.nama_produk}
               </TableCell>
               <TableCell className="text-sm text-center">{item.qty}</TableCell>
               <TableCell className="text-sm text-right">
-                Rp {item.harga.toLocaleString("id-ID")}
+                {item.harga.toLocaleString("id-ID")}
               </TableCell>
               <TableCell className="text-sm text-right">
-                Rp {item.jumlah.toLocaleString("id-ID")}
+                {item.jumlah.toLocaleString("id-ID")}
               </TableCell>
               <TableCell className="text-sm text-center">
                 {/* Tombol Hapus */}
@@ -129,7 +70,7 @@ export default function TabelTransaksi() {
       </TableBody>
       <TableFooter>
         <TableRow className="bg-zinc-100">
-          <TableCell colSpan={4} className="font-semibold text-right">
+          <TableCell colSpan={5} className="font-semibold text-right">
             Total Transaksi
           </TableCell>
           <TableCell className="text-right font-bold text-lg text-primary">

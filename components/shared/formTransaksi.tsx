@@ -69,6 +69,25 @@ export default function FormTransaksi() {
     if (!idProduk || !namaProduk || qty < 1 || hargaAcuan === 0)
       return alert("Data barang / harga tidak valid!");
 
+    if (tipeTransaksi === "penjualan") {
+      // Cari data barang saat ini dari stokData
+      const selectedItem = stokData?.find(
+        (item: any) => item.id_produk === idProduk,
+      );
+
+      // Ganti '.stok' dengan nama field stok yang ada di database/API kamu (misal: .qty, .jumlah_stok)
+      if (selectedItem && selectedItem.stok_akhir === 0) {
+        return alert("Stok barang kosong! Tidak bisa melakukan penjualan.");
+      }
+
+      // (Opsional) Validasi jika qty yang diketik melebihi sisa stok
+      if (selectedItem && qty > selectedItem.stok_akhir) {
+        return alert(
+          `Stok tidak mencukupi! Sisa stok hanya: ${selectedItem.stok_akhir}`,
+        );
+      }
+    }
+
     addToCart({
       id_produk: idProduk,
       nama_produk: namaProduk,
@@ -248,7 +267,7 @@ export default function FormTransaksi() {
 
       <Button
         onClick={() => simpanTransaksiMutation.mutate()}
-        className="w-full mt-4"
+        className="w-full mt-4 h-10"
         size="lg"
         disabled={simpanTransaksiMutation.isPending || cart.length === 0}
       >

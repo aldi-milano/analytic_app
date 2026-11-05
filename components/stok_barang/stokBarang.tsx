@@ -36,6 +36,8 @@ export function StokBarang() {
             <TableHead>Harga Beli</TableHead>
             <TableHead>Harga Jual</TableHead>
             <TableHead>Jumlah Stok</TableHead>
+            <TableHead>Penjualan/Hari</TableHead>
+            <TableHead>Rekomendasi Stok</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -47,6 +49,8 @@ export function StokBarang() {
               <TableCell>{item.harga_beli}</TableCell>
               <TableCell>{item.harga_jual}</TableCell>
               <TableCell>{item.stok_akhir}</TableCell>
+              <TableCell>{item.avg_qty}</TableCell>
+              <TableCell>{item.rekomendasi_qty_stok}</TableCell>
             </TableRow>
           ))}
         </TableBody>
