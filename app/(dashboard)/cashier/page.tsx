@@ -22,6 +22,11 @@ export default function FormTransaksi() {
   const [hargaBeli, setHargaBeli] = useState(0);
   const [hargaJual, setHargaJual] = useState(0);
   const [qty, setQty] = useState(1);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Subtotal dinamis
   const hargaAcuan = tipeTransaksi === "penjualan" ? hargaJual : hargaBeli;
@@ -122,8 +127,8 @@ export default function FormTransaksi() {
   });
 
   return (
-    <div id="bug-report-form" className="mt-8">
-      <div className="mb-5 flex gap-6">
+    <div id="bug-report-form" className="mt-8 p-4">
+      <div className="mb-5 flex gap-6 pl-5">
         <label className="flex items-center gap-2 font-medium">
           <input
             type="radio"
@@ -185,7 +190,7 @@ export default function FormTransaksi() {
 
         {/* ROW 2 (Khusus Pembelian): Kategori & Harga Bebas Edit */}
         {tipeTransaksi === "pembelian" && (
-          <div className="flex flex-row gap-4 bg-blue-50/50 p-3 rounded border border-blue-100">
+          <div className="flex flex-row gap-4 bg-sky-50/60 border-sky-100 p-3 rounded border">
             <Field className="flex-1">
               <FieldLabel>Kategori</FieldLabel>
               <Input

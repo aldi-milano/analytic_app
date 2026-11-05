@@ -321,7 +321,7 @@ export function RushHour() {
         <div className="grid flex-1 gap-1">
           <CardTitle className="text-md">Jam Ramai Pelanggan</CardTitle>
           <CardDescription className="text-sm">
-            Perbandingan transaksi pada Pagi, Siang, dan Malam
+            Perbandingan transaksi pada Pagi, Siang dan Malam
           </CardDescription>
         </div>
         <Select

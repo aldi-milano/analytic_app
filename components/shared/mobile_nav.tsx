@@ -1,10 +1,17 @@
 "use client";
 
-import { ReceiptText, Package, ChartColumnIncreasing } from "lucide-react";
+import {
+  ReceiptText,
+  Package,
+  ChartColumnIncreasing,
+  Plus,
+} from "lucide-react";
 import Link from "next/link";
 import { QuickAction } from "./quick_action";
 import { usePathname } from "next/navigation";
 import { AlertLogout } from "./logout";
+import { Button } from "../ui/button";
+import { ShoppingCart } from "lucide-react";
 
 export function MobileNav() {
   const pathName = usePathname();
@@ -27,10 +34,13 @@ export function MobileNav() {
         <span>Riwayat</span>
       </Link>
 
-      {/* Floating Action Button (FAB) di tengah */}
-      <div className="flex flex-1">
-        <QuickAction />
-      </div>
+      <Link
+        href={"/cashier"}
+        className="flex flex-1 flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-600 hover:scale-105"
+      >
+        <ShoppingCart className="h-5 w-5" />
+        <span>Transaksi</span>
+      </Link>
 
       <Link
         href={"/stock"}
