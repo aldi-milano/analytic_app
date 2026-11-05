@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import FormTransaksi from "./formTransaksi";
 
 export function QuickAction() {
   return (
@@ -29,66 +30,11 @@ export function QuickAction() {
           <Plus className="h-14 w-14" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="bottom" className="rounded-t-2xl px-4 pb-8 pt-6">
-        <SheetHeader className="text-left mb-4">
-          <SheetTitle>Catat Transaksi Baru</SheetTitle>
-        </SheetHeader>
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <div>
-            <label className="text-xs font-medium text-slate-600">
-              Tipe Transaksi
-            </label>
-            <Select defaultValue="pemasukan">
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Pilih tipe" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="pemasukan">Penjualan (Pemasukan)</SelectItem>
-                <SelectItem value="pengeluaran">
-                  Kulakan / Beban (Pengeluaran)
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <label className="text-xs font-medium text-slate-600">
-              Nominal (Rp)
-            </label>
-            <Input
-              type="number"
-              placeholder="0"
-              className="mt-1 text-lg font-bold"
-            />
-          </div>
-
-          <div>
-            <label className="text-xs font-medium text-slate-600">
-              Keterangan / Nama Barang
-            </label>
-            <Input placeholder="Contoh: Minyak Goreng 2L" className="mt-1" />
-          </div>
-
-          <div>
-            <label className="text-xs font-medium text-slate-600">
-              Metode Pembayaran
-            </label>
-            <Select defaultValue="tunai">
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Metode" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="tunai">Tunai / Cash</SelectItem>
-                <SelectItem value="qris">QRIS</SelectItem>
-                <SelectItem value="transfer">Transfer Bank</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <Button type="submit" className="w-full mt-2" size="lg">
-            Simpan Transaksi
-          </Button>
-        </form>
+      <SheetContent
+        side="bottom"
+        className="max-w-md rounded-md px-4 pb-8 pt-6 h-[80%]"
+      >
+        <FormTransaksi />
       </SheetContent>
     </Sheet>
   );

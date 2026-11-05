@@ -17,9 +17,16 @@ export function SheetNotification() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Bell className="h-5 w-5 text-slate-600" />
+        <button
+          type="button"
+          className="relative rounded-full p-2 hover:bg-slate-100"
+          aria-label="Notifikasi"
+        >
+          <Bell className="h-5 w-5 text-slate-600" />
+          <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
+        </button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent side="right" className="max-w-md rounded-md px-4 pb-8 pt-6">
         <div>
           <p>Ini adalah kolom notifikasi</p>
         </div>
