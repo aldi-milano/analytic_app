@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useStokBarang } from "@/lib/hooks/use_stok";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTransaksiStore } from "@/lib/store/useTransaksiStore"; // Import Zustand
@@ -11,6 +11,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export default function FormTransaksi() {
+  const queryClient = useQueryClient();
+  const { data: stokData, isLoading } = useStokBarang();
+  const { cart, tipeTransaksi, setTipeTransaksi, addToCart, clearCart } =
+    useTransaksiStore();
+
   const [idProduk, setIdProduk] = useState("");
   const [namaProduk, setNamaProduk] = useState("");
   const [kategori, setKategori] = useState("Umum");
@@ -22,83 +27,24 @@ export default function FormTransaksi() {
   const hargaAcuan = tipeTransaksi === "penjualan" ? hargaJual : hargaBeli;
   const jumlah = qty * hargaAcuan;
 
-  // PERBAIKAN 2: Buat fungsi khusus untuk reset form input
-  const resetForm = useCallback(() => {
-    setIdProduk("");
-    setNamaProduk("");
-    setKategori("Umum");
-    setHargaBeli(0);
-    setHargaJual(0);
-    setQty(1);
-  }, []);
-
-  // PERBAIKAN 2: Panggil resetForm saat masuk (mount) dan keluar page (unmount)
   useEffect(() => {
-    resetForm(); // Pastikan bersih saat pertama buka page
-
-    return () => {
-      clearCart();
-      resetForm(); // Bersihkan sisa ketikan saat pindah page
-    };
-  }, [clearCart, resetForm]);
+    return () => clearCart();
+  }, [clearCart]);
 
   // Fungsi pengisi data (Autofill)
-  // const autofillFields = (foundItem: any) => {
-  //   if (foundItem) {
-  //     setIdProduk(foundItem.id_produk); // PERBAIKAN 1: Tambahkan ini agar ID ikut ter-autofill
-  //     setNamaProduk(foundItem.nama_produk);
-  //     setKategori(foundItem.kategori);
-  //     setHargaBeli(foundItem.harga_beli);
-  //     setHargaJual(foundItem.harga_jual);
-  //   } else {
-  //     if (tipeTransaksi === "penjualan") {
-  //       setNamaProduk(""); 
-  //       setKategori("Umum");
-  //       setHargaBeli(0);
-  //       setHargaJual(0);
-  //     }
-  //   }
-  // };
-
-  // 1. Handler Jika ID diketik duluan
-  const handleIdChange = (val: string) => {
-    setIdProduk(val);
-    const foundItem = stokData?.find((item: any) => item.id_produk === val);
-
+  const autofillFields = (foundItem: any) => {
     if (foundItem) {
       setNamaProduk(foundItem.nama_produk);
       setKategori(foundItem.kategori);
       setHargaBeli(foundItem.harga_beli);
       setHargaJual(foundItem.harga_jual);
     } else {
-      // Kosongkan yang lain jika ID tidak valid/dihapus
-      setNamaProduk("");
-      setKategori("Umum");
-      setHargaBeli(0);
-      setHargaJual(0);
-    }
-  };
-
-  // 2. Handler Jika Nama Produk diketik duluan
-  const handleNamaChange = (val: string) => {
-    setNamaProduk(val); // Biarkan user mengetik namanya
-    
-    // Cari barang berdasarkan nama yang persis sama
-    const foundItem = stokData?.find(
-      (item: any) => item.nama_produk.toLowerCase() === val.toLowerCase()
-    );
-
-    if (foundItem) {
-      setIdProduk(foundItem.id_produk); // <--- Ini yang akan mengisi ID
-      setKategori(foundItem.kategori);
-      setHargaBeli(foundItem.harga_beli);
-      setHargaJual(foundItem.harga_jual);
-    } else {
-      // Kosongkan ID dan lainnya selama nama belum cocok persis dengan database
-      setIdProduk("");
-      setKategori("Umum");
-      setHargaBeli(0);
-      setHargaJual(0);
+      if (tipeTransaksi === "penjualan") {
+        setNamaProduk("");
+        setKategori("Umum");
+        setHargaBeli(0);
+        setHargaJual(0);
+      }
     }
   };
 
@@ -124,14 +70,17 @@ export default function FormTransaksi() {
       return alert("Data barang / harga tidak valid!");
 
     if (tipeTransaksi === "penjualan") {
+      // Cari data barang saat ini dari stokData
       const selectedItem = stokData?.find(
         (item: any) => item.id_produk === idProduk,
       );
 
+      // Ganti '.stok' dengan nama field stok yang ada di database/API kamu (misal: .qty, .jumlah_stok)
       if (selectedItem && selectedItem.stok_akhir === 0) {
         return alert("Stok barang kosong! Tidak bisa melakukan penjualan.");
       }
 
+      // (Opsional) Validasi jika qty yang diketik melebihi sisa stok
       if (selectedItem && qty > selectedItem.stok_akhir) {
         return alert(
           `Stok tidak mencukupi! Sisa stok hanya: ${selectedItem.stok_akhir}`,
@@ -150,8 +99,12 @@ export default function FormTransaksi() {
       jumlah,
     });
 
-    // Gunakan resetForm di sini agar lebih bersih dan tidak berulang
-    resetForm(); 
+    setIdProduk("");
+    setNamaProduk("");
+    setKategori("Umum");
+    setHargaBeli(0);
+    setHargaJual(0);
+    setQty(1);
   };
 
   const simpanTransaksiMutation = useMutation({
