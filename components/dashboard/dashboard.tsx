@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils";
 import { ProductsWrapper } from "./productsWrapper";
 import { LineSeparator } from "../shared/separator";
 import { RushHour } from "../charts/rushHour";
+import { CategoryProfitChart } from "../charts/profit_margin";
+import { WaktuTransaksi } from "../charts/jamPelanggan";
+import { CarouselCharts } from "../charts/carouselCharts";
+import { RevenueCharts } from "../charts/revenue";
 
 export default function Dashboard() {
   const { data, isLoading } = useDashboardMetrics();
@@ -19,7 +23,7 @@ export default function Dashboard() {
     );
   }
   return (
-    <div className="pb-24">
+    <div className="pb-5">
       <MetricCardGrid
         omset_kotor={data.omset_kotor}
         pengeluaran={data.pengeluaran}
@@ -28,7 +32,7 @@ export default function Dashboard() {
         total_transaksi_pembelian={data.total_transaksi_pembelian}
       />
       <LineSeparator />
-      <RushHour />
+      <CarouselCharts />
       <LineSeparator />
       <ProductsWrapper
         top={data.top_5_barang}

@@ -17,7 +17,6 @@ import { UseTransaction } from "@/lib/hooks/use_transaction";
 
 export function HistoryTransaction() {
   const { data, isLoading } = UseTransaction();
-  console.log(data);
 
   if (isLoading) {
     return (

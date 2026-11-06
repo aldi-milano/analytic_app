@@ -20,8 +20,7 @@ export async function fetchMetric(range: FilterRange = "day") {
     return { data: null, error: error.message };
   }
 
-  console.log("✅ Fetch Berhasil:", data);
+  // console.log("✅ Fetch Berhasil:", data);
   return { data, error: null };
 }
 
-fetchMetric();

@@ -14,8 +14,7 @@ export async function fetchTransaction(range: FilterRange = "day") {
     throw new Error(error.message);
   }
 
-  console.log("✅ Fetch Berhasil:", data);
+  // console.log("✅ Fetch Berhasil:", data);
   return { data, error: null };
 }
 
-fetchTransaction("day");

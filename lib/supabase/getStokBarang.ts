@@ -13,4 +13,3 @@ export async function GetStok() {
   return { data, error: null };
 }
 
-GetStok();

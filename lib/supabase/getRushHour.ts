@@ -14,8 +14,7 @@ export async function GetRushHour(range: FilterRange = 7) {
     throw new Error(error.message);
   }
 
-  console.log("✅ Fetch Berhasil:", data);
+  // console.log("✅ Fetch Berhasil:", data);
   return { data, error: null };
 }
 
-GetRushHour(7);
