@@ -60,7 +60,7 @@ export function CategoryProfitChart() {
         <CardDescription>September - November 2026</CardDescription>
       </CardHeader>
       <CardContent className="p-2 pt-0">
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
           {/* 2. Tambahkan margin top agar angka di atas bar tidak terpotong oleh batas SVG */}
           <BarChart accessibilityLayer data={chartsData} margin={{ top: 40 }}>
             <CartesianGrid vertical={false} />
