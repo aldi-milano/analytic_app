@@ -33,9 +33,9 @@ export function UseTransaction() {
       if (res.error) throw new Error(res.error);
       return res.data;
     },
-    staleTime: 1000 * 60 * 10,
-    gcTime: 1000 * 60 * 30,
-    placeholderData: keepPreviousData,
+    // staleTime: 1000 * 60 * 10,
+    // gcTime: 1000 * 60 * 30,
+    // placeholderData: keepPreviousData,
   });
 
   return {
