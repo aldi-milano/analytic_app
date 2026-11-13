@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useStokBarang } from "@/lib/hooks/use_stok";
+import { useStokBarang } from "@/lib/hooks/useDashboardHooks";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTransaksiStore } from "@/lib/store/useTransaksiStore"; // Import Zustand
 import TabelTransaksi from "./tableTransaksi";

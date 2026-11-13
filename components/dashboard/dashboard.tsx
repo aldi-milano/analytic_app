@@ -6,11 +6,7 @@ import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProductsWrapper } from "./productsWrapper";
 import { LineSeparator } from "../shared/separator";
-import { RushHour } from "../charts/rushHour";
-import { CategoryProfitChart } from "../charts/profit_margin";
-import { WaktuTransaksi } from "../charts/jamPelanggan";
 import { CarouselCharts } from "../charts/carouselCharts";
-import { RevenueCharts } from "../charts/revenue";
 
 export default function Dashboard() {
   const { data, isLoading } = useDashboardMetrics();
