@@ -1,6 +1,6 @@
 "use client";
 
-import { useStokBarang, StokInformasi } from "@/lib/hooks/use_stok";
+import { useStokBarang, StokInformasi } from "@/lib/hooks/useDashboardHooks";
 import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AlertTriangleIcon, AlertCircleIcon } from "lucide-react";

@@ -2,7 +2,7 @@
 
 import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useStokBarang, StokInformasi } from "@/lib/hooks/use_stok";
+import { useStokBarang, StokInformasi } from "@/lib/hooks/useDashboardHooks";
 import {
   Table,
   TableBody,

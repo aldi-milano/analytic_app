@@ -17,7 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useProfitCategory } from "@/lib/hooks/use_profit_category";
+import { useProfitCategory } from "@/lib/hooks/useDashboardHooks";
 import Collapsible from "./collapsible";
 
 const chartConfig = {

@@ -1,7 +1,7 @@
 "use client";
 
 import { MetricCardGrid } from "./metricCardGrid";
-import { useDashboardMetrics } from "@/lib/hooks/use_db_metric";
+import { useDashboardMetrics } from "@/lib/hooks/useDashboardHooks";
 import { LoaderIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProductsWrapper } from "./productsWrapper";

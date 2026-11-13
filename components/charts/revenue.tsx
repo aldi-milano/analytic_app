@@ -24,7 +24,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useRevenue } from "@/lib/hooks/use_revenue";
+import { useRevenue } from "@/lib/hooks/useDashboardHooks";
 
 const chartConfig = {
   total_transaksi: {

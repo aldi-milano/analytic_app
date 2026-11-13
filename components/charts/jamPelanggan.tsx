@@ -1,5 +1,5 @@
 "use client";
-import { useWaktuTransaksi } from "@/lib/hooks/use_waktuTransaksi";
+import { useWaktuTransaksi } from "@/lib/hooks/useDashboardHooks";
 
 import { Pie, PieChart } from "recharts";
 import { Lightbulb, Rocket } from "lucide-react";

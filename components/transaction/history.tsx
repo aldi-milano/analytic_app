@@ -13,7 +13,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { LoaderIcon } from "lucide-react";
-import { UseTransaction } from "@/lib/hooks/use_transaction";
+import { UseTransaction } from "@/lib/hooks/useDashboardHooks";
 
 export function HistoryTransaction() {
   const { data, isLoading } = UseTransaction();

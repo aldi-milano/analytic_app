@@ -3,7 +3,7 @@
 import { Bell } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Notification } from "./notification";
-import { useStokBarang, StokInformasi } from "@/lib/hooks/use_stok";
+import { useStokBarang, StokInformasi } from "@/lib/hooks/useDashboardHooks";
 
 export function SheetNotification() {
   const { data: stokBarang } = useStokBarang();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useStokBarang } from "@/lib/hooks/use_stok";
+import { useStokBarang } from "@/lib/hooks/useDashboardHooks";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useTransaksiStore } from "@/lib/store/useTransaksiStore"; // Import Zustand
 import TabelTransaksi from "@/components/shared/tableTransaksi";
@@ -9,6 +9,7 @@ import { InsertTransaksi } from "@/lib/actions/transaksi";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ClockSkeleton } from "@/components/shared/skeletonClock";
 
 export default function FormTransaksi() {
   const queryClient = useQueryClient();
@@ -125,6 +126,10 @@ export default function FormTransaksi() {
     },
     onError: (error) => alert(error.message),
   });
+
+  if (!isMounted) {
+    return <ClockSkeleton />;
+  }
 
   return (
     <div id="bug-report-form" className="mt-8 p-4">
