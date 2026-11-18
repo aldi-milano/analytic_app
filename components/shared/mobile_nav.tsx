@@ -7,10 +7,8 @@ import {
   Plus,
 } from "lucide-react";
 import Link from "next/link";
-import { QuickAction } from "./quick_action";
 import { usePathname } from "next/navigation";
 import { AlertLogout } from "./logout";
-import { Button } from "../ui/button";
 import { ShoppingCart } from "lucide-react";
 
 export function MobileNav() {

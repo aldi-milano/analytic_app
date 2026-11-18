@@ -46,7 +46,6 @@ export function RevenueCharts() {
   }
 
   // 2. Debugging: Pastikan data benar-benar sampai ke client component
-  console.log("Data di Client:", revenue);
 
   return (
     <div>

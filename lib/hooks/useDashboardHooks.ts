@@ -8,7 +8,6 @@ import {
   fetchTransaction,
   getStok,
   GetProfitByCategory,
-  CategoryProfit,
   GetWaktuTransaksi,
   GetRevenue,
   TypeRevenue,

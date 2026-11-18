@@ -33,10 +33,6 @@ export default function FormTransaksi() {
   const hargaAcuan = tipeTransaksi === "penjualan" ? hargaJual : hargaBeli;
   const jumlah = qty * hargaAcuan;
 
-  useEffect(() => {
-    return () => clearCart();
-  }, [clearCart]);
-
   // Fungsi pengisi data (Autofill)
   const autofillFields = (foundItem: any) => {
     if (foundItem) {
@@ -126,6 +122,24 @@ export default function FormTransaksi() {
     },
     onError: (error) => alert(error.message),
   });
+
+  const clearInput = () => {
+    setIdProduk("");
+    setNamaProduk("");
+    setKategori("Umum");
+    setHargaBeli(0);
+    setHargaJual(0);
+    setQty(1);
+  };
+
+  useEffect(() => {
+    console.log("component mounted");
+    return () => {
+      console.log("component unmounted");
+      clearCart();
+      clearInput();
+    };
+  }, [clearCart]);
 
   if (!isMounted) {
     return <ClockSkeleton />;
